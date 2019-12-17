@@ -7,9 +7,23 @@ Suppose you were a museum using Spark to calculate household membership costs.  
 
 ## Grouping Data in Case Classes
 
+If you want to follow along, copy and paste the following into a file.
+```
+firstName,lastName,age,street,houseNumber,city
+Anne,Morrow,33,second,28,Denver
+Zak,Morrow,33,second,28,Denver
+Kaylee,Morrow,3,second,28,Denver
+Jennifer,Little,76,juniper,1986,Boulder
+Lawrence,Little,68,juniper,1986,Boulder
+Amy,Little,30,juniper,1986,Boulder
+Tina,Little,6,juniper,1986,Boulder
+Lila,Little,1,juniper,1986,Boulder
+Todd,James,27,third,18,Denver
+```
+
 Often, we receive data that is flat, such as in csv format, even if that means there is lots of redundant information.  If you load the sample data into the spark shell, you'll see this:
 ```scala
-scala> val df = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load(path)
+scala> val df = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load(PATH_TO_FILE)
 df: org.apache.spark.sql.DataFrame = [firstName: string, lastName: string ... 4 more fields]
 
 scala> df.show
